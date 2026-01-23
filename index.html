@@ -1,0 +1,1284 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>Jessie Math  - 兩步驟問題與算式</title>
+
+  <!-- ✅ 快取連結預覽（請放在 <head> 裡） -->
+  <meta name="description" content="© 2025–2026 Jessie Math 捷析老師. All rights reserved.">
+  <!-- ✅ LINE / FB 預覽用 -->
+  <meta property="og:title" content="Jessie Math  - 兩步驟問題與算式">
+  <meta property="og:description" content="© 2025–2026 Jessie Math 捷析老師. All rights reserved.">
+  <meta property="og:type" content="website">
+
+  <!-- ✅ 預覽圖片-->
+  <meta property="og:image" content="g4-u8-1.png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1536">
+  <meta property="og:image:alt" content="Jessie Math 遊戲封面">
+
+  <!-- ✅ 有些平台會參考 -->
+  <link rel="image_src" href="g4-u8-1.png">
+
+  <!-- ✅ Twitter / X（可用同一張圖） -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jessie Math  - 兩步驟問題與算式">
+  <meta name="twitter:description" content="© 2025–2026 Jessie Math 捷析老師. All rights reserved.">
+  <meta name="twitter:image" content="g4-u8-1.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Noto+Sans+TC:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e5e7eb;
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --accent: #5f73ff;
+      --accent-soft: #e0e7ff;
+      --accent-strong: #4338ca;
+      --danger: #ef4444;
+      --success: #16a34a;
+      --warning: #f97316;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-pill: 999px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      background: radial-gradient(circle at top, #eef2ff 0, #f4f6fb 45%, #e5f0ff 100%);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ✅ Hero 長條（維持） */
+    .hero{
+      width:100%;
+      max-width:none;
+      margin:0;
+      padding:12px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid rgba(229,231,235,0.9);
+      box-shadow: 0 6px 18px rgba(15,23,42,0.08);
+      backdrop-filter: blur(12px);
+
+      border-radius:0;
+      position: sticky;
+      top:0;
+      z-index:100;
+    }
+
+    .hero-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    /* ✅ 左上角只要：黃圈＋中間我（PNG透明底）＋ Jessie Math（下面不要字） */
+    .brand-badge{
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: transparent;
+      border: 4px solid #f59e0b;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 6px 14px rgba(15,23,42,0.10);
+      flex-shrink: 0;
+    }
+    .brand-avatar{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: transparent;
+      padding: 0;
+      box-shadow: none;
+      object-fit: contain;
+      display:block;
+    }
+    .brand-text-main {
+      font-family: "Fredoka", system-ui;
+      font-weight: 800;
+      font-size: 30px;
+      line-height: 1.05;
+      color: #111827;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      text-shadow: 0 1px 0 rgba(15,23,42,0.06);
+    }
+    .brand-text-sub { display:none; }
+
+    .hero-right {
+      display: flex;
+      gap: 8px;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+    .top-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: #ffffff;
+      font-size: 12px;
+      text-decoration: none;
+      color: #111827;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(148,163,184,0.25);
+    }
+    .top-link i{font-size:13px;}
+    .top-link:hover {
+      background: #0f172a;
+      color: #f9fafb;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 16px rgba(15,23,42,0.35);
+    }
+    .top-link.topic-link {
+      border-color: var(--accent-strong);
+      color: var(--accent-strong);
+      background: #eef2ff;
+    }
+    .top-link.topic-link:hover {
+      background: var(--accent-strong);
+      color: #f9fafb;
+    }
+
+    /* Layout Containers */
+    .page-wrap { width: 100%; max-width: 960px; margin: 0 auto; padding: 12px; flex: 1; }
+    .card {
+      background: var(--card); border-radius: var(--radius-xl);
+      box-shadow: var(--shadow); padding: 24px; margin-bottom: 24px;
+    }
+    .hidden { display: none !important; }
+
+    /* ✅ Page 1：置中卡片風格（維持） */
+    #page-intro.card{
+      background: transparent;
+      box-shadow: none;
+      padding: 0;
+      margin-bottom: 0;
+    }
+    .start-stage{
+      min-height: calc(100vh - 140px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 18px 12px 26px;
+    }
+    .start-card{
+      width: min(520px, 100%);
+      background:#ffffff;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 34px 28px 26px;
+      text-align:center;
+      border: 1px solid rgba(229,231,235,0.9);
+      position: relative;
+    }
+    .start-icon{
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius: 18px;
+      background: #f8fafc;
+      border: 1px solid rgba(229,231,235,0.9);
+      box-shadow: 0 10px 24px rgba(15,23,42,0.08);
+      font-size: 30px;
+      user-select:none;
+      color: #111827;
+    }
+    .start-title{
+      font-size: 26px;
+      font-weight: 900;
+      color:#111827;
+      letter-spacing: .02em;
+      margin-bottom: 6px;
+    }
+    .start-sub{
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .start-card .answer-input{
+      margin: 10px 0 14px;
+      font-size: 16px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 2px solid #dbe3ef;
+    }
+    .start-card .primary-btn{
+      width:100%;
+      padding: 14px 18px;
+      border-radius: 16px;
+      justify-content:center;
+    }
+
+    /* Menu Layout */
+    .menu-layout { display: grid; grid-template-columns: 1fr 300px; gap: 20px; }
+    .level-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 16px 0; }
+    .level-card {
+      border: 2px solid var(--line); border-radius: var(--radius-lg);
+      padding: 16px; cursor: pointer; transition: all 0.2s; position: relative;
+      background:#ffffff;
+    }
+    .level-card:hover { border-color: var(--accent); background: #f8faff; }
+    .level-card.active { border-color: var(--accent-strong); background: var(--accent-soft); transform: scale(1.02); }
+    .level-badge { position: absolute; right: 10px; bottom: 5px; font-size: 40px; opacity: 0.1; font-weight: 900; }
+
+    /* Game HUD */
+    .status-panel {
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      background: #f8fafc; border-radius: var(--radius-lg); padding: 15px 25px;
+      margin-bottom: 15px; border: 1px solid var(--line);
+    }
+    .status-center { text-align: center; }
+    .time-val { font-family: "Plus Jakarta Sans"; font-size: 32px; font-weight: 800; color: var(--accent-strong); }
+    .status-item-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .status-item-val { font-size: 18px; font-weight: 700; }
+
+    /* Scene Card */
+    .scene-card {
+      background: white; border-radius: var(--radius-xl); border: 1px solid var(--line);
+      padding: 40px; text-align: center; position: relative; min-height: 350px;
+      display: flex; flex-direction: column; justify-content: center;
+      transition: background 0.2s ease;
+      overflow: hidden;
+    }
+    .scene-emoji { font-size: 50px; margin-bottom: 15px; }
+    .scene-question { font-size: 22px; font-weight: 700; line-height: 1.6; margin-bottom: 20px; color: var(--ink); }
+
+    /* ✨ 各關卡共用：互動算式選擇 */
+    .formula-choices{ margin-bottom:18px; }
+    .formula-title{
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:8px;
+      color:#111827;
+    }
+    .formula-list{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:8px;
+    }
+    .formula-chip{
+      padding:10px 20px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.9);
+      background:#f8fafc;
+      font-size:16px;
+      cursor:pointer;
+      transition:all .16s ease;
+      white-space:nowrap;
+    }
+    .formula-chip:hover{ background:#eef2ff; }
+    .formula-chip.active{
+      border-color:var(--accent-strong);
+      background:#eef2ff;
+      box-shadow:0 0 0 1px rgba(79,70,229,0.4);
+      color:#111827;
+    }
+
+    .scene-hint {
+      background: #fffbeb; border: 1px dashed #fcd34d; padding: 12px;
+      border-radius: var(--radius-md); font-size: 14px; color: #92400e;
+      margin: 15px 0; display: none;
+    }
+
+    /* Input Area */
+    .answer-zone { max-width: 400px; margin: 0 auto; width: 100%; }
+    .answer-input {
+      width: 100%; padding: 15px; border-radius: var(--radius-pill);
+      border: 2px solid var(--line); font-size: 20px; text-align: center;
+      outline: none; transition: all 0.2s; margin-bottom: 15px;
+    }
+    .answer-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+
+    /* Buttons */
+    .primary-btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: white; border: none; padding: 12px 24px; border-radius: var(--radius-pill);
+      font-weight: 700; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .primary-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4); }
+    .primary-btn:disabled { background: #cbd5e1; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .game-btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap; /* ✅ RWD：手機可自動換行 */
+    }
+    .game-btn {
+      padding: 8px 16px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600;
+      cursor: pointer; border: 1px solid var(--line); background: white; transition: 0.2s;
+      white-space: nowrap; /* ✅ 按鈕文字不斷行 */
+      min-width: 112px;     /* ✅ RWD：手機也好點按 */
+    }
+    .game-btn:hover { background: #f1f5f9; }
+
+    /* ✅ 小吐司回饋（不改版面：動態插入用） */
+    .toast{
+      position:absolute;
+      left:50%;
+      top:18px;
+      transform:translateX(-50%);
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.02em;
+      border: 1px solid rgba(229,231,235,0.9);
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.10);
+      backdrop-filter: blur(10px);
+      opacity:0;
+      pointer-events:none;
+      transition: all .18s ease;
+      white-space: nowrap;
+    }
+    .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+    .toast.good{ color:#065f46; }
+    .toast.bad{ color:#991b1b; }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6);
+      display: flex; align-items: center; justify-content: center; z-index: 1000;
+    }
+    .modal {
+      background: white; border-radius: var(--radius-xl); padding: 32px;
+      max-width: 400px; width: 90%; text-align: center; box-shadow: var(--shadow);
+    }
+
+    /* Leaderboard */
+    .leaderboard-list { list-style: none; margin-top: 12px; }
+    .leaderboard-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 12px;
+      background: #f8fafc;
+      border-radius: 8px;
+      margin-bottom: 6px;
+      font-size: 14px;
+      flex-wrap: nowrap;        /* ✅ 不換行 */
+      white-space: nowrap;      /* ✅ 不換行 */
+    }
+    .leaderboard-list li.top1{ border: 1px solid rgba(250,204,21,0.55); background: rgba(250,204,21,0.12); }
+    .leaderboard-list li.top2{ border: 1px solid rgba(148,163,184,0.55); background: rgba(148,163,184,0.12); }
+    .leaderboard-list li.top3{ border: 1px solid rgba(245,158,11,0.35); background: rgba(245,158,11,0.10); }
+
+    .lb-rank{
+      font-weight: 900;
+      white-space: nowrap;   /* ✅ 名次不換行 */
+      flex: 0 0 auto;
+    }
+    .lb-name{
+      flex: 1 1 auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
+    }
+    .lb-score {
+      font-weight: 800;
+      color: var(--accent-strong);
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+
+    /* ✅ Footer */
+    footer{ width:100%; padding: 12px 12px 18px; }
+    .footer-pill{
+      max-width: 960px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(229,231,235,0.9);
+      border-radius: 999px;
+      padding: 10px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(12px);
+    }
+    .footer-left, .footer-right{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .footer-dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #f59e0b;
+      box-shadow: 0 0 0 4px rgba(245,158,11,0.18);
+      flex-shrink:0;
+    }
+    .footer-copy{
+      font-size: 13px;
+      color:#111827;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 520px;
+    }
+    .footer-icon{
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #eef2ff;
+      border: 1px solid rgba(67,56,202,0.2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: var(--accent-strong);
+      flex-shrink:0;
+    }
+    .footer-tagline{
+      font-size: 13px;
+      color:#111827;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 320px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-layout { grid-template-columns: 1fr; }
+      .level-grid { grid-template-columns: 1fr; }
+      .status-panel { grid-template-columns: 1fr; gap: 10px; text-align: center; }
+
+      .hero { flex-direction: column; align-items: flex-start; gap: 10px; padding: 12px 14px; }
+      .hero-right { width: 100%; flex-wrap: wrap; }
+
+      .scene-card { padding: 20px; }
+      .scene-question { font-size: 18px; }
+      .footer-pill{ border-radius: 22px; flex-direction: column; align-items: flex-start; }
+      .footer-copy, .footer-tagline{ max-width: 100%; }
+      .start-stage{ min-height: calc(100vh - 190px); }
+
+      .brand-text-main{ font-size: 28px; }
+
+      /* ✅ RWD：排行榜更穩（不換行、名字可省略） */
+      .leaderboard-list li{ font-size: 13px; }
+      .lb-rank{ font-size: 12px; }
+      .lb-score{ font-size: 13px; }
+
+      /* ✅ RWD：遊戲按鈕區更好按 */
+      .game-btn{ min-width: 108px; padding: 10px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-left">
+      <div class="brand-badge" aria-hidden="true">
+        <img src="JESSIEMATH-Q.png" alt="Jessie Math" class="brand-avatar">
+      </div>
+      <div>
+        <div class="brand-text-main">Jessie Math</div>
+        <div class="brand-text-sub">（已隱藏）</div>
+      </div>
+    </div>
+    <nav class="hero-right">
+      <a href="https://jessiemath0703-chu.github.io/website2/" target="_blank" rel="noopener" class="top-link">
+        <i class="fa-solid fa-house"></i><span>首頁</span>
+      </a>
+      <a href="https://jessiemath0703-chu.github.io/Game-Lobby/" target="_blank" rel="noopener" class="top-link">
+        <i class="fa-solid fa-gamepad"></i><span>遊戲大廳</span>
+      </a>
+      <a href="https://jessiemath0703-chu.github.io/Game-Lobby/#g4-u8" target="_blank" rel="noopener" class="top-link topic-link">
+        <i class="fa-solid fa-arrow-left-long"></i><span>四年級兩步驟問題與併式</span>
+      </a>
+    </nav>
+  </header>
+
+  <main class="page-wrap">
+    <!-- Page 1：輸入名字 -->
+    <section id="page-intro" class="card">
+      <div class="start-stage">
+        <div class="start-card">
+          <div class="start-icon" aria-hidden="true"><i class="fa-solid fa-calculator"></i></div>
+
+          <h1 class="start-title">兩步驟問題與併式挑戰PRO</h1>
+          <p class="start-sub">60 秒極限挑戰，準備好你的大腦了嗎？</p>
+
+          <input type="text" id="playerNameInput" class="answer-input" placeholder="輸入你的名字" maxlength="10">
+          <button id="btnToIntro" class="primary-btn" disabled>進入冒險</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 2：主選單 -->
+    <section id="page-menu" class="card hidden">
+      <div class="menu-layout">
+        <div>
+          <h2 style="margin-bottom: 8px;">準備好了嗎？ <span id="displayName" style="color:var(--accent-strong)"></span></h2>
+          <p style="color:var(--muted); font-size: 14px;">請選擇一個關卡與難度開始挑戰：</p>
+
+          <div class="level-grid">
+            <div class="level-card" data-level="1">
+              <strong style="display:block;">第一關：互動式加減任務</strong>
+              <small style="color:var(--muted)">先選出正確算式，再算出答案</small>
+              <div class="level-badge">1</div>
+            </div>
+            <div class="level-card" data-level="2">
+              <strong style="display:block;">第二關：乘除搭配加減</strong>
+              <small style="color:var(--muted)">混合運算兩步驟</small>
+              <div class="level-badge">2</div>
+            </div>
+            <div class="level-card" data-level="3">
+              <strong style="display:block;">第三關：平均分＆總量</strong>
+              <small style="color:var(--muted)">先算總量，再平均分</small>
+              <div class="level-badge">3</div>
+            </div>
+            <div class="level-card" data-level="4">
+              <strong style="display:block;">第四關：王者綜合賽</strong>
+              <small style="color:var(--muted)">四種情境全隨機</small>
+              <div class="level-badge">4</div>
+            </div>
+          </div>
+
+          <div style="margin: 20px 0;">
+            <p style="font-size: 14px; font-weight: 700; margin-bottom: 10px;">選擇難度：</p>
+            <div style="display: flex; gap: 10px;">
+              <button class="game-btn diff-btn" data-diff="easy">輕鬆暖身</button>
+              <button class="game-btn diff-btn" data-diff="normal">標準挑戰</button>
+              <button class="game-btn diff-btn" data-diff="hard">地獄模式</button>
+            </div>
+          </div>
+
+          <button id="btnStartGame" class="primary-btn" style="width: 100%; padding: 16px;" disabled>開始 60 秒挑戰！</button>
+        </div>
+
+        <aside>
+          <div style="background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 16px;">
+            <h3 style="font-size: 16px;"><i class="fa-solid fa-trophy" style="color:#facc15"></i> 本機排行榜（每關前十名）</h3>
+            <ul id="lbList" class="leaderboard-list">
+              <li style="color:var(--muted); text-align:center;">尚無紀錄</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Page 3：實際遊戲 -->
+    <section id="page-game" class="hidden">
+      <div class="status-panel">
+        <div>
+          <div class="status-item-label">Score 分數</div>
+          <div class="status-item-val" id="scoreDisplay">0</div>
+        </div>
+        <div class="status-center">
+          <div class="status-item-label">Time 剩餘時間</div>
+          <div class="time-val" id="timeDisplay">60</div>
+        </div>
+        <div style="text-align: right;">
+          <div class="status-item-label">Combo 連擊</div>
+          <div class="status-item-val" id="comboDisplay" style="color:var(--warning)">x0</div>
+        </div>
+      </div>
+
+      <div class="scene-card" id="sceneCard">
+        <div class="scene-emoji" id="sceneEmoji">🧾</div>
+        <div class="scene-question" id="sceneQuestion">題目載入中...</div>
+
+        <div id="formulaChoices" class="formula-choices hidden">
+          <p class="formula-title">請先選出你覺得正確的算式：</p>
+          <div id="formulaList" class="formula-list"></div>
+        </div>
+
+        <div class="answer-zone">
+          <input type="number" id="answerInput" class="answer-input" placeholder="輸入答案" inputmode="numeric">
+          <button id="btnSubmit" class="primary-btn" style="width: 100%;">送出答案（Enter）</button>
+        </div>
+
+        <div class="scene-hint" id="sceneHint">這是提示內容...</div>
+
+        <div class="game-btn-group">
+          <button class="game-btn" id="btnShowHint"><i class="fa-regular fa-lightbulb"></i> 顯示提示</button>
+
+          <!-- ✅ 新增：暫停 / 重來（放在放棄退出旁邊） -->
+          <button class="game-btn" id="btnPause"><i class="fa-solid fa-pause"></i> 暫停</button>
+          <button class="game-btn" id="btnRestart"><i class="fa-solid fa-rotate-right"></i> 重來</button>
+
+          <button class="game-btn" id="btnQuit"><i class="fa-solid fa-door-open"></i> 放棄退出</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-pill">
+      <div class="footer-left">
+        <div class="footer-dot" aria-hidden="true"></div>
+        <div class="footer-copy">© 2025–2026 Jessie Math 捷析老師. All rights reserved.</div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-icon" aria-hidden="true"><i class="fas fa-compass"></i></div>
+        <div class="footer-tagline">數學不迷路，Jessie 帶你走向理解。</div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="modalGameOver" class="modal-backdrop hidden">
+    <div class="modal">
+      <h2 style="font-size: 28px;">時間到！⌛</h2>
+      <p style="margin: 15px 0; color: var(--muted);">恭喜完成挑戰！你的表現是：</p>
+      <div style="font-size: 40px; font-weight: 900; color: var(--accent-strong); margin-bottom: 20px;">
+        <span id="finalScore">0</span> <small style="font-size: 16px;">分</small>
+      </div>
+      <div id="finalStars" style="font-size: 24px; color: #facc15; margin-bottom: 20px;">★★★</div>
+      <button class="primary-btn" onclick="goBackToMenu()" style="width: 100%;">回主選單</button>
+    </div>
+  </div>
+
+  <script>
+    // --- 遊戲狀態 ---
+    let playerName = "";
+    let selectedLevel = null;
+    let selectedDifficulty = null;
+    let score = 0;
+    let timeLeft = 60;
+    let combo = 0;
+    let timer = null;
+    let currentAns = 0;
+    let currentQuestion = null;
+    let selectedFormulaIndex = null;
+
+    // ✅ 暫停狀態
+    let isPaused = false;
+
+    const btnToIntro = document.getElementById('btnToIntro');
+    const nameInput = document.getElementById('playerNameInput');
+
+    const formulaChoices = document.getElementById('formulaChoices');
+    const formulaList = document.getElementById('formulaList');
+
+    // ✅ Toast（正確回饋）
+    const sceneCard = document.getElementById('sceneCard');
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    sceneCard.appendChild(toast);
+
+    function showToast(msg, type){
+      toast.textContent = msg;
+      toast.classList.remove('good','bad','show');
+      toast.classList.add(type === 'good' ? 'good' : 'bad');
+      requestAnimationFrame(()=> toast.classList.add('show'));
+      setTimeout(()=> toast.classList.remove('show'), 850);
+    }
+
+    // 監聽暱稱輸入
+    nameInput.addEventListener('input', () => {
+      btnToIntro.disabled = nameInput.value.trim().length === 0;
+    });
+
+    btnToIntro.addEventListener('click', () => {
+      playerName = nameInput.value.trim();
+      document.getElementById('displayName').textContent = playerName;
+      switchPage('page-menu');
+      loadLeaderboard();
+    });
+
+    // 關卡與難度選擇
+    document.querySelectorAll('.level-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.level-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        selectedLevel = parseInt(card.dataset.level);
+        checkMenuReady();
+        loadLeaderboard(); // ✅ 依關卡顯示前十名
+      });
+    });
+
+    document.querySelectorAll('.diff-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.diff-btn').forEach(b => b.style.background = 'white');
+        btn.style.background = 'var(--accent-soft)';
+        selectedDifficulty = btn.dataset.diff;
+        checkMenuReady();
+      });
+    });
+
+    function checkMenuReady() {
+      document.getElementById('btnStartGame').disabled = !(selectedLevel && selectedDifficulty);
+    }
+
+    document.getElementById('btnStartGame').addEventListener('click', startGame);
+
+    // --- 遊戲開始與計時 ---
+    function startGame() {
+      score = 0;
+      timeLeft = 60;
+      combo = 0;
+      isPaused = false;
+      setPausedUI(false);
+
+      updateUI();
+      document.getElementById('timeDisplay').textContent = timeLeft;
+      switchPage('page-game');
+      nextQuestion();
+      startTimer();
+    }
+
+    function startTimer() {
+      if(timer) clearInterval(timer);
+      timer = setInterval(() => {
+        if(isPaused) return;
+        timeLeft--;
+        if(timeLeft < 0) timeLeft = 0;
+        document.getElementById('timeDisplay').textContent = timeLeft;
+        if(timeLeft <= 0) endGame();
+      }, 1000);
+    }
+
+    // ✅ 暫停UI：鎖輸入 + 按鈕文字切換
+    function setPausedUI(paused){
+      const ans = document.getElementById('answerInput');
+      const submit = document.getElementById('btnSubmit');
+      const pauseBtn = document.getElementById('btnPause');
+
+      ans.disabled = paused;
+      submit.disabled = paused;
+
+      pauseBtn.innerHTML = paused
+        ? '<i class="fa-solid fa-play"></i> 繼續'
+        : '<i class="fa-solid fa-pause"></i> 暫停';
+    }
+
+    // --- 工具 ---
+    function rand(min, max){ return Math.floor(Math.random() * (max - min + 1)) + min; }
+    function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+    function shuffleArray(arr){
+      const a = arr.slice();
+      for(let i=a.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [a[i],a[j]] = [a[j],a[i]];
+      }
+      return a;
+    }
+
+    function uniq(arr){
+      const out = [];
+      const seen = new Set();
+      for(const x of arr){
+        const k = String(x).trim();
+        if(!seen.has(k)){
+          seen.add(k);
+          out.push(x);
+        }
+      }
+      return out;
+    }
+
+    // ✅ 產生可整除的平均分題
+    function makeDivisibleProduct(){
+      const c = rand(3,6);
+      const k = rand(8,20);
+      const a = rand(2,5);
+      const b = c * k;
+      return {a,b,c};
+    }
+
+    // =========================
+    // ✅ 題庫：更豐富更多樣
+    // =========================
+
+    const L1_BANK = [
+      () => {
+        const a = rand(20,80), b = rand(10,40), c = rand(5,30);
+        return {
+          text: `商店原本有 ${a} 個蘋果，進貨 ${b} 個，賣出 ${c} 個，還剩幾個？`,
+          correctExpr: `${a} + ${b} − ${c}`,
+          ans: a + b - c,
+          emoji: '🍎',
+          hint: `先把進貨加進來 (${a}+${b})，再扣掉賣出的 ${c}。`
+        };
+      },
+      () => {
+        const a = rand(40,120), b = rand(10,50), c = rand(10,60);
+        const b2 = Math.max(b, c + 5);
+        return {
+          text: `小明有 ${a} 元，先借給同學 ${b2} 元，後來同學還他 ${c} 元，小明現在有幾元？`,
+          correctExpr: `${a} − (${b2} − ${c})`,
+          ans: a - (b2 - c),
+          emoji: '💰',
+          hint: `借出去再還回來：等於先減掉「還沒還的部分」。`
+        };
+      },
+      () => {
+        const a = rand(30,90), b = rand(10,40), c = rand(5,30);
+        return {
+          text: `一盒彩色筆有 ${a} 枝，又買了 ${b} 枝，送人 ${c} 枝，還有幾枝？`,
+          correctExpr: `(${a} + ${b}) − ${c}`,
+          ans: (a + b) - c,
+          emoji: '🖍️',
+          hint: `先算總共有幾枝，再扣掉送人的。`
+        };
+      },
+      () => {
+        const a = rand(50,120), b = rand(10,60), c = rand(10,60);
+        const c2 = Math.min(c, a-5);
+        return {
+          text: `圖書角原本有 ${a} 本書，新來 ${b} 本，借出 ${c2} 本，現在有幾本？`,
+          correctExpr: `(${a} + ${b}) − ${c2}`,
+          ans: (a + b) - c2,
+          emoji: '📚',
+          hint: `新來的先加進來，再減掉借出的。`
+        };
+      },
+      () => {
+        const a = rand(30,80), b = rand(10,50), c = rand(10,40);
+        const a2 = Math.max(a, c + 5);
+        return {
+          text: `奇奇有 ${a2} 張卡片，花花給他 ${b} 張後，奇奇又送出 ${c} 張，最後有幾張？`,
+          correctExpr: `${a2} + ${b} − ${c}`,
+          ans: a2 + b - c,
+          emoji: '🃏',
+          hint: `先收再送：加完再減。`
+        };
+      }
+    ];
+
+    const L2_BANK = [
+      () => {
+        const a = rand(3,8), b = rand(5,12), c = rand(10,40);
+        const total = a*b;
+        const c2 = Math.min(c, total-1);
+        return {
+          text: `一盒軟糖有 ${b} 顆，買了 ${a} 盒，吃掉 ${c2} 顆後還剩幾顆？`,
+          correctExpr: `${a} × ${b} − ${c2}`,
+          ans: total - c2,
+          emoji: '🍬',
+          hint: `先算總顆數 (${a}×${b})，再減掉吃掉的。`
+        };
+      },
+      () => {
+        const price = rand(25,80), count = rand(4,9), coupon = rand(20,90);
+        const total = price*count;
+        const coupon2 = Math.min(coupon, total-5);
+        return {
+          text: `一個小玩具 ${price} 元，買 ${count} 個，用折價券省下 ${coupon2} 元，還要付多少元？`,
+          correctExpr: `${price} × ${count} − ${coupon2}`,
+          ans: total - coupon2,
+          emoji: '🧸',
+          hint: `先算原價總共多少，再扣掉折價券。`
+        };
+      },
+      () => {
+        const a = rand(6,15), b = rand(30,90), c = rand(50,200);
+        const total = a*b;
+        const c2 = Math.min(c, total-10);
+        return {
+          text: `阿美每天存 ${b} 元，存了 ${a} 天後買文具花了 ${c2} 元，還剩多少元？`,
+          correctExpr: `${b} × ${a} − ${c2}`,
+          ans: total - c2,
+          emoji: '📝',
+          hint: `先算存款總額，再減掉花費。`
+        };
+      },
+      () => {
+        const a = rand(3,7), b = rand(80,160), c = rand(30,120);
+        return {
+          text: `一份便當 ${b} 元，買 ${a} 份後又加點配料共 ${c} 元，總共多少元？`,
+          correctExpr: `${b} × ${a} + ${c}`,
+          ans: b*a + c,
+          emoji: '🍱',
+          hint: `先算便當總價，再加上配料。`
+        };
+      }
+    ];
+
+    const L3_BANK = [
+      () => {
+        const {a,b,c} = makeDivisibleProduct();
+        return {
+          text: `有 ${a} 箱飲料，每箱有 ${b} 瓶，要平均分給 ${c} 個班級，每班分到幾瓶？`,
+          correctExpr: `${a} × ${b} ÷ ${c}`,
+          ans: (a*b)/c,
+          emoji: '🥤',
+          hint: `先算總瓶數 (${a}×${b})，再除以班級數。`
+        };
+      },
+      () => {
+        const c = rand(3,6);
+        const bags = rand(40,120);
+        const total = bags * c;
+        return {
+          text: `糖果共有 ${total} 顆，每袋裝 ${c} 顆，可以裝成幾袋？`,
+          correctExpr: `${total} ÷ ${c}`,
+          ans: total / c,
+          emoji: '🍭',
+          hint: `總顆數 ÷ 每袋顆數。`
+        };
+      },
+      () => {
+        const groups = rand(3,6);
+        const per = rand(6,15);
+        const boxes = rand(2,5);
+        return {
+          text: `有 ${boxes} 箱餅乾，每箱 ${per*groups} 包，要平均分給 ${groups} 組，每組分到幾包？`,
+          correctExpr: `${boxes} × ${per*groups} ÷ ${groups}`,
+          ans: boxes * per,
+          emoji: '🍪',
+          hint: `先算總包數，再平均分。`
+        };
+      }
+    ];
+
+    const L4_BANK = [
+      () => pick(L1_BANK)(),
+      () => pick(L2_BANK)(),
+      () => pick(L3_BANK)(),
+      () => {
+        const a = rand(60,120), b = rand(10,50), c = rand(10,40);
+        const ans = (a - b) + c;
+        return {
+          text: `先算 ${a} − ${b}，再把結果加上 ${c}，最後是多少？`,
+          correctExpr: `(${a} − ${b}) + ${c}`,
+          ans,
+          emoji: '🧮',
+          hint: `兩步驟就用括號把第一步包起來。`
+        };
+      }
+    ];
+
+    function generateByLevel(lv){
+      if(lv === 1) return pick(L1_BANK)();
+      if(lv === 2) return pick(L2_BANK)();
+      if(lv === 3) return pick(L3_BANK)();
+      return pick(L4_BANK)();
+    }
+
+    function buildChoices(correctExpr, meta){
+      const variants = [];
+      const {a,b,c,kind} = meta || {};
+      function push(v){ variants.push(v); }
+
+      if(kind === 'addsub'){
+        push(`${a} − ${b} + ${c}`);
+        push(`${a} + ${c} − ${b}`);
+        push(`(${a} − ${c}) + ${b}`);
+      } else if(kind === 'a_minus_b_minus_c'){
+        push(`${a} − ${b} − ${c}`);
+        push(`${a} − (${c} − ${b})`);
+        push(`${a} + ${b} − ${c}`);
+      } else if(kind === 'mulsub'){
+        push(`${a} + ${b} − ${c}`);
+        push(`${a} × ${b} + ${c}`);
+        push(`(${a} − ${c}) × ${b}`);
+      } else if(kind === 'muladd'){
+        push(`${a} × ${b} − ${c}`);
+        push(`${a} + ${b} + ${c}`);
+        push(`${a} × (${b} + ${c})`);
+      } else if(kind === 'muldiv'){
+        push(`${a} ÷ ${b} × ${c}`);
+        push(`${a} × ${b} + ${c}`);
+        push(`${a} × (${b} + ${c})`);
+      } else if(kind === 'divonly'){
+        push(`${a} × ${b}`);
+        push(`${a} ÷ (${b} + 1)`);
+        push(`${a} ÷ ${b} + 1`);
+      } else {
+        push(`${correctExpr} + 0`);
+        push(`${correctExpr.replace('−','+')}`);
+        push(`${correctExpr.replace('×','÷')}`);
+      }
+
+      const pool = uniq([correctExpr, ...variants]).filter(x => x !== correctExpr);
+      const wrongs = shuffleArray(pool).slice(0,2);
+      return shuffleArray([
+        {expr: correctExpr, correct:true},
+        {expr: wrongs[0], correct:false},
+        {expr: wrongs[1], correct:false},
+      ]);
+    }
+
+    function makeQuestion(lv){
+      const raw = generateByLevel(lv);
+
+      const nums = (raw.correctExpr.match(/\d+/g) || []).map(n=>parseInt(n,10));
+      const a = nums[0] ?? 0, b = nums[1] ?? 0, c = nums[2] ?? 0;
+
+      let kind = 'other';
+      const expr = raw.correctExpr;
+      if(expr.includes('−') && expr.includes('+')) kind = 'addsub';
+      if(expr.includes('− (') || expr.includes('−(')) kind = 'a_minus_b_minus_c';
+      if(expr.includes('×') && expr.includes('−')) kind = 'mulsub';
+      if(expr.includes('×') && expr.includes('+')) kind = 'muladd';
+      if(expr.includes('×') && expr.includes('÷')) kind = 'muldiv';
+      if(expr.includes('÷') && !expr.includes('×') && !expr.includes('+') && !expr.includes('−')) kind = 'divonly';
+
+      const choices = buildChoices(raw.correctExpr, {a,b,c,kind});
+      const correctIndex = choices.findIndex(x=>x.correct);
+
+      return {
+        level: lv,
+        text: raw.text,
+        ans: raw.ans,
+        emoji: raw.emoji,
+        hint: raw.hint,
+        formulas: choices.map(x=>x.expr),
+        correctIndex
+      };
+    }
+
+    function renderFormulas(q){
+      selectedFormulaIndex = null;
+      formulaList.innerHTML = "";
+
+      if(q.formulas && q.formulas.length){
+        formulaChoices.classList.remove('hidden');
+        q.formulas.forEach((expr, idx)=>{
+          const btn = document.createElement('button');
+          btn.className = 'formula-chip';
+          btn.type = 'button';
+          btn.textContent = expr;
+          btn.addEventListener('click', ()=>{
+            selectedFormulaIndex = idx;
+            document.querySelectorAll('.formula-chip').forEach(c=>c.classList.remove('active'));
+            btn.classList.add('active');
+          });
+          formulaList.appendChild(btn);
+        });
+      }else{
+        formulaChoices.classList.add('hidden');
+      }
+    }
+
+    function nextQuestion() {
+      const q = makeQuestion(selectedLevel);
+      currentQuestion = q;
+      currentAns = q.ans;
+
+      document.getElementById('sceneQuestion').textContent = q.text;
+      document.getElementById('sceneEmoji').textContent = q.emoji;
+      document.getElementById('sceneHint').textContent = q.hint;
+      document.getElementById('sceneHint').style.display = 'none';
+      document.getElementById('answerInput').value = '';
+      document.getElementById('answerInput').disabled = false;
+      document.getElementById('btnSubmit').disabled = false;
+      document.getElementById('answerInput').focus();
+
+      renderFormulas(q);
+    }
+
+    document.getElementById('btnSubmit').addEventListener('click', checkAnswer);
+    document.getElementById('answerInput').addEventListener('keypress', (e) => {
+      if(e.key === 'Enter') checkAnswer();
+    });
+
+    function checkAnswer() {
+      if(isPaused) return;
+
+      const val = document.getElementById('answerInput').value.trim();
+      if(val === "") return;
+
+      const userAns = parseInt(val, 10);
+      if(isNaN(userAns)) return;
+
+      if(currentQuestion && currentQuestion.formulas){
+        if(selectedFormulaIndex === null){
+          alert("請先選出你覺得正確的算式，再輸入答案。");
+          return;
+        }
+      }
+
+      const correctFormula = currentQuestion.formulas[currentQuestion.correctIndex];
+      const formulaOK = (selectedFormulaIndex === currentQuestion.correctIndex);
+      const answerOK = (userAns === currentAns);
+
+      const isCorrect = formulaOK && answerOK;
+
+      if(isCorrect) {
+        combo++;
+        score += 10 + (combo * 2);
+        timeLeft += 3;
+        if(timeLeft > 120) timeLeft = 120;
+        flashCard('correct');
+        showToast(`✅ 正確！連擊 x${combo} 也太猛`, 'good');
+      } else {
+        combo = 0;
+        timeLeft -= 5;
+        if(timeLeft < 0) timeLeft = 0;
+        flashCard('wrong');
+
+        const msg =
+          `答錯了！\n\n` +
+          `正確算式：${correctFormula}\n` +
+          `正確答案：${currentAns}\n\n` +
+          `你的算式：${currentQuestion.formulas[selectedFormulaIndex]}\n` +
+          `你的答案：${userAns}`;
+        alert(msg);
+        showToast(`❌ 差一點！看正確算式＋答案`, 'bad');
+      }
+
+      document.getElementById('timeDisplay').textContent = timeLeft;
+      updateUI();
+
+      if(timeLeft <= 0){
+        endGame();
+      }else{
+        nextQuestion();
+      }
+    }
+
+    function flashCard(type){
+      const card = document.querySelector('.scene-card');
+      const color = type === 'correct' ? '#dcfce7' : '#fee2e2';
+      card.style.background = color;
+      setTimeout(() => card.style.background = '#ffffff', 280);
+    }
+
+    function updateUI() {
+      document.getElementById('scoreDisplay').textContent = score;
+      document.getElementById('comboDisplay').textContent = `x${combo}`;
+    }
+
+    function endGame() {
+      clearInterval(timer);
+      document.getElementById('finalScore').textContent = score;
+      document.getElementById('finalStars').textContent =
+        score > 200 ? '★★★' : (score > 100 ? '★★☆' : '★☆☆');
+      document.getElementById('modalGameOver').classList.remove('hidden');
+      saveScore(score);
+    }
+
+    function goBackToMenu(){
+      if(timer) clearInterval(timer);
+      timer = null;
+      score = 0;
+      combo = 0;
+      timeLeft = 60;
+      isPaused = false;
+      setPausedUI(false);
+
+      updateUI();
+      document.getElementById('timeDisplay').textContent = timeLeft;
+      document.getElementById('modalGameOver').classList.add('hidden');
+      switchPage('page-menu');
+      loadLeaderboard();
+    }
+
+    function switchPage(pageId) {
+      document.querySelectorAll('section.card, section.hidden, #page-game, #page-intro, #page-menu').forEach(p => {
+        if(p.tagName === 'SECTION') p.classList.add('hidden');
+      });
+      document.getElementById(pageId).classList.remove('hidden');
+    }
+
+    document.getElementById('btnShowHint').addEventListener('click', () => {
+      const h = document.getElementById('sceneHint');
+      h.style.display = (h.style.display === 'none' || h.style.display === '') ? 'block' : 'none';
+    });
+
+    document.getElementById('btnQuit').addEventListener('click', () => {
+      if(confirm('確定要放棄目前的挑戰嗎？')) {
+        goBackToMenu();
+      }
+    });
+
+    // ✅ 新增：暫停
+    document.getElementById('btnPause').addEventListener('click', () => {
+      isPaused = !isPaused;
+      setPausedUI(isPaused);
+      showToast(isPaused ? '⏸️ 已暫停' : '▶ 繼續衝啦', isPaused ? 'bad' : 'good');
+      if(!isPaused) document.getElementById('answerInput').focus();
+    });
+
+    // ✅ 新增：重來（留在遊戲頁）
+    document.getElementById('btnRestart').addEventListener('click', () => {
+      if(confirm('確定要重來這一局嗎？分數會歸零喔。')) {
+        score = 0;
+        combo = 0;
+        timeLeft = 60;
+        isPaused = false;
+        setPausedUI(false);
+        updateUI();
+        document.getElementById('timeDisplay').textContent = timeLeft;
+        nextQuestion();
+        showToast('🔄 重新開局，走起！', 'good');
+      }
+    });
+
+    // =========================
+    // ✅ 排行榜：每個關卡前十名 + 🥇🥈🥉 標示
+    // =========================
+    function lbKeyForLevel(lv){
+      return `jessieMathLB_g4u8_lv${lv}`;
+    }
+
+    function saveScore(s) {
+      const lv = selectedLevel || 1;
+      const key = lbKeyForLevel(lv);
+      let lb = JSON.parse(localStorage.getItem(key) || '[]');
+      lb.push({name: playerName || '未命名', score: s, date: new Date().toLocaleDateString()});
+      lb.sort((a,b) => b.score - a.score);
+      localStorage.setItem(key, JSON.stringify(lb.slice(0,10)));
+      loadLeaderboard();
+    }
+
+    function loadLeaderboard() {
+      const lv = selectedLevel || 1;
+      const key = lbKeyForLevel(lv);
+      let lb = JSON.parse(localStorage.getItem(key) || '[]');
+      const list = document.getElementById('lbList');
+
+      if(lb.length === 0) {
+        list.innerHTML = `<li style="color:var(--muted); text-align:center;">尚無紀錄</li>`;
+        return;
+      }
+
+      const medal = (idx) => idx===0 ? '🥇 第一名' : (idx===1 ? '🥈 第二名' : (idx===2 ? '🥉 第三名' : `第 ${idx+1} 名`));
+      list.innerHTML = lb.map((i, idx) => {
+        const cls = idx===0 ? 'top1' : (idx===1 ? 'top2' : (idx===2 ? 'top3' : ''));
+        return `
+          <li class="${cls}">
+            <span class="lb-rank">${medal(idx)}</span>
+            <span class="lb-name">${i.name}</span>
+            <span class="lb-score">${i.score}</span>
+          </li>
+        `;
+      }).join('');
+    }
+  </script>
+</body>
+</html>
+
+
+
+
